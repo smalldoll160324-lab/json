@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Parqueadero</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1> Control y Pago de Parqueadero </h1>
+
+        <!-- Formulario de entrada de datos -->
+        <form id="formulario" class="formulario">
+            <div class="grupo">
+                <label>Tipo de vehículo:</label>
+                <select id="tipoVehiculo" required>
+                    <option value="">Seleccione...</option>
+                    <option value="automovil">Automóvil</option>
+                    <option value="moto">Moto</option>
+                </select>
+            </div>
+
+            <div class="grupo">
+                <label>Placa del vehículo:</label>
+                <input type="text" id="placa" placeholder="Ej: ABC123 o XYZ78C" required>
+                <span id="errorPlaca" class="error"></span>
+            </div>
+
+            <div class="grupo">
+                <label>Fecha y hora de ingreso:</label>
+                <input type="datetime-local" id="fechaIngreso" required>
+                <span id="errorIngreso" class="error"></span>
+            </div>
+
+            <div class="grupo">
+                <label>Fecha y hora de salida:</label>
+                <input type="datetime-local" id="fechaSalida" required>
+                <span id="errorSalida" class="error"></span>
+            </div>
+
+            <button type="submit" class="btn">Calcular Valor a Pagar</button>
+        </form>
+
+        <!-- Resultados del cálculo -->
+        <div id="resultado" class="resultado oculto">
+            <h3> Resumen del servicio</h3>
+            <p><strong>Tiempo parqueado:</strong> <span id="tiempoMin"></span> min (<span id="tiempoHoras"></span> h)</p>
+            <p><strong>Valor base:</strong> $<span id="valorBase"></span></p>
+            <p id="descuentoInfo" class="oculto"><strong>Descuento pico y placa (25%):</strong> -$<span id="valorDescuento"></span></p>
+            <p><strong>Valor ajustado a pagar:</strong> $<span id="valorFinal"></span></p>
+
+            <div class="pago">
+                <label>Ingrese dinero recibido ($):</label>
+                <input type="number" id="dineroRecibido" min="0" placeholder="Ej: 50000">
+                <button id="calcularCambio" class="btn btn-secundario">Calcular Cambio</button>
+                <span id="errorPago" class="error"></span>
+            </div>
+
+            <div id="cambioInfo" class="oculto">
+                <h4> Cambio a devolver:</h4>
+                <p id="desgloseCambio"></p>
+            </div>
+
+            <button id="guardarRegistro" class="btn btn-exito oculto">Guardar Registro</button>
+        </div>
+    </div>
+
+    <script src="codigo4.js"></script>
+</body>
+</html>
